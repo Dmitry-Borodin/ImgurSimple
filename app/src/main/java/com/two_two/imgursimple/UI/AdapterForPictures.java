@@ -2,14 +2,18 @@ package com.two_two.imgursimple.UI;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.two_two.imgursimple.ImgurSimple;
 import com.two_two.imgursimple.R;
+import com.two_two.imgursimple.volley.MyApplication;
 import com.two_two.imgursimple.volley.VolleySingleton;
 
 import java.util.ArrayList;
@@ -21,7 +25,7 @@ import java.util.ArrayList;
 public class AdapterForPictures extends BaseAdapter{
     private Activity activity;
     private LayoutInflater inflater;
-    private ArrayList<String> listUrlPictures = new ArrayList<>();
+    private ArrayList<String> listUrlPictures;
     private VolleySingleton volleySingleton;
     private ImageLoader imageLoader;
     private String urlOfPicture;
@@ -31,6 +35,11 @@ public class AdapterForPictures extends BaseAdapter{
         this.listUrlPictures = listUrlPictures;
         volleySingleton = VolleySingleton.getInstance();
         imageLoader = volleySingleton.getImageLoader();
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
     }
 
     @Override
@@ -53,14 +62,20 @@ public class AdapterForPictures extends BaseAdapter{
         if (inflater == null){
             inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
-        if (convertView == null) {
-            convertView = inflater.inflate(R.layout.item_picture, null);
-        }
+/*        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.item_picture, mContext);
+        }*/
 
-        NetworkImageView picture = (NetworkImageView)convertView.findViewById(R.id.pictureView);
+//        NetworkImageView picture = (NetworkImageView)convertView.findViewById(R.id.pictureView);
+        NetworkImageView picture = new NetworkImageView(MyApplication.getAppContext());
+        picture.setLayoutParams(new GridView.LayoutParams(85, 85));
+        picture.setScaleType(NetworkImageView.ScaleType.CENTER_CROP);
+        picture.setPadding(8,8,8,8);
+
         urlOfPicture = listUrlPictures.get(position);
         picture.setImageUrl(urlOfPicture, imageLoader);
-        convertView.setTag(urlOfPicture);
-        return convertView;
+        Log.d(ImgurSimple.TAG, "url is " + urlOfPicture + " imageloader " + imageLoader.toString());
+//        convertView.setTag(urlOfPicture);
+        return picture;
     }
 }

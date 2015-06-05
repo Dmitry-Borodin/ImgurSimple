@@ -1,5 +1,7 @@
 package com.two_two.imgursimple;
 
+import java.util.ArrayList;
+
 /**
  * Created by DmitryBorodin on 04.06.2015.
  * This is basic class for project constants and so on.

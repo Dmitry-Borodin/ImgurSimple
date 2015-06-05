@@ -11,6 +11,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
 import com.two_two.imgursimple.ImgurSimple;
+import com.two_two.imgursimple.UI.AdapterForPictures;
 import com.two_two.imgursimple.volley.MyApplication;
 import com.two_two.imgursimple.volley.VolleySingleton;
 
@@ -28,7 +29,6 @@ import java.util.concurrent.TimeoutException;
  * Created by DmitryBorodin on 04.06.2015.
  */
 public class JsonParser {
-    private static ArrayList<String> listUrlPictures = new ArrayList<>();
     private static VolleySingleton volleySingleton = VolleySingleton.getInstance();
     private static RequestQueue requestQueue = volleySingleton.getRequestQueue();
 
@@ -39,7 +39,7 @@ public class JsonParser {
         volleySingleton = VolleySingleton.getInstance();
     }
 
-    public static ArrayList<String> sendJsonRequest() {
+    public static void sendJsonRequest(final AdapterForPictures adapterForPictures, final ArrayList<String> listUrlPictures) {
 
         Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
             @Override
@@ -49,7 +49,7 @@ public class JsonParser {
                     Log.e(ImgurSimple.TAG, "Response is NULL!!!"+ response.toString());
                 }
                 try {
-/*            Here we will sawe what we need from JSON. Just links to pictures in our case.*/
+            /*Here we will sawe what we need from JSON. Just links to pictures in our case.*/
                     JSONArray arrayPictures = null;
                     if (response != null) {
                         arrayPictures = response.getJSONObject("data").getJSONArray("images");
@@ -67,7 +67,8 @@ public class JsonParser {
                             "В указанном альбоме нет картинок",
                             Toast.LENGTH_LONG).show();
                 }
-
+                Log.e(ImgurSimple.TAG, "notified");
+                adapterForPictures.notifyDataSetChanged();
             }
         };
 
@@ -85,13 +86,11 @@ public class JsonParser {
 
         requestQueue.add(jsonObjReq);
 
-/*        JSONObject response = null;
+  /*JSONObject response = null;
 
         RequestFuture<JSONObject> requestFuture = RequestFuture.newFuture();
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
-                ImgurSimple.urlJson,
-                (String)null, requestFuture, requestFuture);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, ImgurSimple.urlJson, requestFuture, requestFuture);
 
         requestQueue.add(request);
         Log.e(ImgurSimple.TAG, "request added");  //TODO
@@ -107,12 +106,34 @@ public class JsonParser {
             e.printStackTrace();
         }
         Log.e(ImgurSimple.TAG, "before parse");  //TODO
-        listUrlPictures = parseJsonResponse(response); */
+        listUrlPictures = parseJsonResponse(response);
         Log.e(ImgurSimple.TAG, "before return"+listUrlPictures.toString());
         return listUrlPictures;
     }
 
-/*    private static ArrayList<String> parseJsonResponse(JSONObject response) {
+    private static ArrayList<String> parseJsonResponse(JSONObject response) {
+        Log.d(ImgurSimple.TAG, "i get response");
+        if (response == null || response.length() <= 0) {
+            Log.e(ImgurSimple.TAG, "Response is NULL!!!");
+        }
+        try {
+            *//*            Here we will sawe what we need from JSON. Just links to pictures in our case.*//*
+            JSONArray arrayPictures = null;
+            if (response != null) {
+                arrayPictures = response.getJSONObject("data").getJSONArray("images");
+                for (int i = 0; i < arrayPictures.length(); i++) {
+                    JSONObject currentArticle = arrayPictures.getJSONObject(i);
+                    String pictureLink = currentArticle.getString("link");
+                    listUrlPictures.add(pictureLink);
+                }
+            }
 
-    }*/
+        } catch (JSONException e) {
+            //this is test application so i don't handle unstable behaviour. DB
+            e.printStackTrace();
+            Toast.makeText(MyApplication.getAppContext(),
+                    "В указанном альбоме нет картинок",
+                    Toast.LENGTH_LONG).show();
+        }*/
+    }
 }

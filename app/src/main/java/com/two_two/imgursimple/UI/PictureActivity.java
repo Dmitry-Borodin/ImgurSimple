@@ -31,13 +31,16 @@ public class PictureActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        ProgressDialogForJson.pDialogProgress(this);
-        listUrlPictures = JsonParser.sendJsonRequest();
-        ProgressDialogForJson.pDialogHide();
-        Log.e(ImgurSimple.TAG, "before gridview"+listUrlPictures.toString());
-
         GridView myGrid = (GridView)findViewById(R.id.pictureGrid);
-        myGrid.setAdapter(new AdapterForPictures(this, listUrlPictures));
+        AdapterForPictures adapterForPictures = new AdapterForPictures(this, listUrlPictures);
+        myGrid.setAdapter(adapterForPictures);
+
+        ProgressDialogForJson.pDialogProgress(this);
+        JsonParser.sendJsonRequest(adapterForPictures, listUrlPictures);
+        ProgressDialogForJson.pDialogHide();
+        Log.e(ImgurSimple.TAG, "before gridview" + listUrlPictures.toString());
+
+
     }
 
 /*
