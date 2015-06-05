@@ -7,5 +7,5 @@ package com.two_two.imgursimple;
 public class ImgurSimple {
     public static final String TAG = "DmitryTag";
     //This is URL for imgur that returns JSON for pictures within particular gallery. gallery ID needed at the end of URL.
-    public static final String urlJson = "http://api.imgur.com/3/gallery/o0pr3"; //TODO delete groupID from here
+    public volatile static String urlJson = "http://api.imgur.com/3/gallery/o0pr3"; //TODO delete groupID from here
 }

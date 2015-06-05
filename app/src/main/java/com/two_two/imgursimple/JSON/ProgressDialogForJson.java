@@ -16,7 +16,7 @@ public class ProgressDialogForJson {
         pDialog.setMessage(context.getString(com.two_two.imgursimple.R.string.loading_message));
         pDialog.show();
     }
-    public static void hidePDialog() {
+    public static void pDialogHide() {
         if (pDialog != null) {
             pDialog.dismiss();
             pDialog = null;
