@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ImgurSimple</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="DefaultImGurGroup">o0pr3</string>
+    <string name="loading_message">Loading...</string>
+    <string name="button_name_main_activity">Поехали</string>
+    <string name="title_activity_picture">PictureActivity</string>
+</resources>
