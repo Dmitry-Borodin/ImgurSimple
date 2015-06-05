@@ -1,6 +1,5 @@
-package com.two_two.imgursimple.JSON;
+package com.two_two.imgursimple.json;
 
-import android.app.DownloadManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -9,9 +8,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.RequestFuture;
 import com.two_two.imgursimple.ImgurSimple;
-import com.two_two.imgursimple.UI.AdapterForPictures;
+import com.two_two.imgursimple.ui.AdapterForPictures;
 import com.two_two.imgursimple.volley.MyApplication;
 import com.two_two.imgursimple.volley.VolleySingleton;
 
@@ -19,11 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 /**
  * Created by DmitryBorodin on 04.06.2015.
@@ -46,13 +40,12 @@ public class JsonParser {
             public void onResponse(JSONObject response) {
                 Log.d(ImgurSimple.TAG, "i get response");
                 if (response == null || response.length() <= 0) {
-                    Log.e(ImgurSimple.TAG, "Response is NULL!!!"+ response.toString());
+                    Log.e(ImgurSimple.TAG, "Response is NULL!!!");
                 }
                 try {
             /*Here we will sawe what we need from JSON. Just links to pictures in our case.*/
-                    JSONArray arrayPictures = null;
                     if (response != null) {
-                        arrayPictures = response.getJSONObject("data").getJSONArray("images");
+                        JSONArray arrayPictures = response.getJSONObject("data").getJSONArray("images");
                         for (int i = 0; i < arrayPictures.length(); i++) {
                             JSONObject currentArticle = arrayPictures.getJSONObject(i);
                             String pictureLink = currentArticle.getString("link");
@@ -64,7 +57,7 @@ public class JsonParser {
                     //this is test application so i don't handle unstable behaviour. DB
                     e.printStackTrace();
                     Toast.makeText(MyApplication.getAppContext(),
-                            "В указанном альбоме нет картинок",
+                            "Ошибка. Наверное в указанном альбоме нет картинок",    //TODO
                             Toast.LENGTH_LONG).show();
                 }
                 Log.e(ImgurSimple.TAG, "notified");

@@ -1,8 +1,7 @@
-package com.two_two.imgursimple.UI;
+package com.two_two.imgursimple.ui;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +10,6 @@ import android.widget.GridView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-import com.two_two.imgursimple.ImgurSimple;
-import com.two_two.imgursimple.R;
 import com.two_two.imgursimple.volley.MyApplication;
 import com.two_two.imgursimple.volley.VolleySingleton;
 
@@ -62,20 +59,16 @@ public class AdapterForPictures extends BaseAdapter{
         if (inflater == null){
             inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
-/*        if (convertView == null) {
-            convertView = inflater.inflate(R.layout.item_picture, mContext);
-        }*/
 
 //        NetworkImageView picture = (NetworkImageView)convertView.findViewById(R.id.pictureView);
         NetworkImageView picture = new NetworkImageView(MyApplication.getAppContext());
-        picture.setLayoutParams(new GridView.LayoutParams(85, 85));
+        picture.setLayoutParams(new GridView.LayoutParams(200, 200));
         picture.setScaleType(NetworkImageView.ScaleType.CENTER_CROP);
-        picture.setPadding(8,8,8,8);
+        picture.setPadding(15,15,15,15);
 
         urlOfPicture = listUrlPictures.get(position);
         picture.setImageUrl(urlOfPicture, imageLoader);
-        Log.d(ImgurSimple.TAG, "url is " + urlOfPicture + " imageloader " + imageLoader.toString());
-//        convertView.setTag(urlOfPicture);
+
         return picture;
     }
 }

@@ -1,18 +1,15 @@
-package com.two_two.imgursimple.UI;
+package com.two_two.imgursimple.ui;
 
 import android.app.ProgressDialog;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.GridView;
 
 import com.two_two.imgursimple.ImgurSimple;
-import com.two_two.imgursimple.JSON.JsonParser;
-import com.two_two.imgursimple.JSON.ProgressDialogForJson;
+import com.two_two.imgursimple.json.JsonParser;
+import com.two_two.imgursimple.json.ProgressDialogForJson;
 import com.two_two.imgursimple.R;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 

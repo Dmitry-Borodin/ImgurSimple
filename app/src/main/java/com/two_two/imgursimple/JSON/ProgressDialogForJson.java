@@ -1,4 +1,4 @@
-package com.two_two.imgursimple.JSON;
+package com.two_two.imgursimple.json;
 
 import android.app.ProgressDialog;
 import android.content.Context;

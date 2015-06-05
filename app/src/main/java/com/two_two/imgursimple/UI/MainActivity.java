@@ -1,4 +1,4 @@
-package com.two_two.imgursimple.UI;
+package com.two_two.imgursimple.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
