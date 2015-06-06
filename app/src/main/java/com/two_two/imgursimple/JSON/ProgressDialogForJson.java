@@ -1,12 +1,11 @@
-package com.two_two.imgursimple.json;
+package com.two_two.imgursimple.JSON;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 
 /**
  * Created by DmitryBorodin on 04.06.2015.
- * This will show LOADING bar while pictureloading.
- * JSONParsing and picture loading is in Fragments.
+ * This will show LOADING bar while getting JSON.
  */
 public class ProgressDialogForJson {
     private static ProgressDialog pDialog;

@@ -10,58 +10,60 @@
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:id="@+id/editText"
-        android:layout_weight="1"
         android:text="@string/DefaultImGurGroup"
         android:gravity="center"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/buttonGoForImages"
-        android:layout_toRightOf="@+id/buttonGoForImages" />
+        android:layout_toEndOf="@+id/remarkForGroupId"
+        android:layout_toRightOf="@+id/remarkForGroupId"/>
 
     <TextView
         android:layout_width="162dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Group id:"
+        android:text="@string/albom_group_id"
         android:id="@+id/remarkForGroupId"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/buttonAlbom"
+        android:gravity="center" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_name_main_activity"
-        android:id="@+id/buttonGoForImages"
+        android:id="@+id/buttonAlbom"
+        android:onClick="onButtonAlbom"
+        android:textStyle="normal"
         android:layout_below="@+id/editText"
-        android:onClick="onButtonGoForImages"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignRight="@+id/pictureGridMain"
+        android:layout_alignEnd="@+id/pictureGridMain"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText" />
 
     <GridView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/gridView"
-        android:layout_below="@+id/buttonGoForImages"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/pictureGridMain"
+        android:layout_gravity="center"
+        android:numColumns="2"
+        android:choiceMode="singleChoice"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/abc_action_bar_default_padding_material"
+        android:layout_below="@+id/buttonAlbom" />
 
-    <!--
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/buttonGoForImages"
-        android:id="@+id/frameForImages"
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Button_gallery"
+        android:id="@+id/buttonShowGallery"
+        android:onClick="onButtonGallery"
+        android:layout_alignBottom="@+id/buttonAlbom"
+        android:layout_alignRight="@+id/remarkForGroupId"
+        android:layout_alignEnd="@+id/remarkForGroupId"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"></FrameLayout>
-    -->
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>

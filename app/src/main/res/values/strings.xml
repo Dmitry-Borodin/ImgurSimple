@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">ImgurSimple</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="DefaultImGurGroup">o0pr3</string>
     <string name="loading_message">Loading...</string>
-    <string name="button_name_main_activity">Поехали</string>
+    <string name="button_name_main_activity">Альбом</string>
     <string name="title_activity_picture">PictureActivity</string>
+
+    <string name="error_no_images">"Ошибка. Наверное в указанном альбоме нет картинок"</string>
+    <string name="error_not_respond">"Ошибка. Вероятно сервер не отвечает"</string>
+
+    <string name="url_json_group_base">http://api.imgur.com/3/gallery/</string>
+    <string name="url_json_gallery">http://api.imgur.com/3/gallery.json</string>
+    <string name="Button_gallery">Галерея</string>
+    <string name="albom_group_id">Albom Group id:</string>
+
 </resources>

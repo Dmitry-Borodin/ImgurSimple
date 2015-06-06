@@ -1,4 +1,4 @@
-package com.two_two.imgursimple.ui;
+package com.two_two.imgursimple.UI;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,7 +17,9 @@ import java.util.ArrayList;
 
 /**
  * Created by DmitryBorodin on 04.06.2015.
- * This adapter will fill pictures from imgur to pictures fragment.
+ * This adapter will fill ViewGrid with pictures from imgur.
+ * pointer to List of Links is provided in constructor.
+ * Image parameters (size etc) is provided in getView method.
  */
 public class AdapterForPictures extends BaseAdapter{
     private Activity activity;
@@ -62,7 +64,7 @@ public class AdapterForPictures extends BaseAdapter{
 
 //        NetworkImageView picture = (NetworkImageView)convertView.findViewById(R.id.pictureView);
         NetworkImageView picture = new NetworkImageView(MyApplication.getAppContext());
-        picture.setLayoutParams(new GridView.LayoutParams(200, 200));
+        picture.setLayoutParams(new GridView.LayoutParams(300, 300));
         picture.setScaleType(NetworkImageView.ScaleType.CENTER_CROP);
         picture.setPadding(15,15,15,15);
 
