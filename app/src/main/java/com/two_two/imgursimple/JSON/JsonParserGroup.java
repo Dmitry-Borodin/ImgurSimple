@@ -56,7 +56,7 @@ public class JsonParserGroup {
                     //this is test application so i don't handle unstable behaviour. DB
                     e.printStackTrace();
                     Toast.makeText(MyApplication.getAppContext(),
-                            MyApplication.getAppContext().getString(R.string.error_no_images),    //TODO
+                            MyApplication.getAppContext().getString(R.string.error_no_images),
                             Toast.LENGTH_LONG).show();
                 }
                 Log.e(ImgurSimple.TAG, "notified");
